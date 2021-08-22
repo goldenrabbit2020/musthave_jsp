@@ -16,18 +16,18 @@ public class FrontController extends HttpServlet {
         String uri = req.getRequestURI();
         int lastSlash = uri.lastIndexOf("/");
         String commandStr = uri.substring(lastSlash);
-        
+
         if (commandStr.equals("/regist.one"))
             registFunc(req);
-        else if (commandStr.equals("/login.one"))            
+        else if (commandStr.equals("/login.one"))
             loginFunc(req);
         else if (commandStr.equals("/freeboard.one"))
             freeboardFunc(req);
-        
+
         req.setAttribute("uri", uri);
-        req.setAttribute("commandStr", commandStr);
+        req.setAttribute("commandStr", commandStr); 
         req.getRequestDispatcher("/13Servlet/FrontController.jsp").forward(req, resp);
-    }    
+    }
 
     // 페이지별 처리 메서드
     void registFunc(HttpServletRequest req) {
