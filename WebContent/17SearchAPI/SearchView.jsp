@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>  
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>검색 API</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script>
 // [검색 요청] 버튼 클릭 시 실행할 메서드를 정의합니다.
 $(function() {
@@ -17,9 +18,9 @@ $(function() {
             keyword : $('#keyword').val(),                   // 검색어
             startNum : $('#startNum option:selected').val()  // 검색 시작 위치
         },
-        dataType : "json",      // 응답 데이터 형식 
-        success : sucFuncJson,  // 요청 성공 시 호출할 함수 설정
-        error : errFunc         // 요청 실패 시 호출할 함수 설정
+        dataType : "json",      // 응답 데이터 형식
+        success : sucFuncJson,  // 요청 성공 시 호출할 메서드 설정
+        error : errFunc         // 요청 실패 시 호출할 메서드 설정
       });
     });
 });
@@ -43,9 +44,10 @@ function sucFuncJson(d) {
 
 // 실패 시 경고창을 띄워줍니다.
 function errFunc(e) {
-    alert("실패: " + e.status);  
+    alert("실패: " + e.status);
 }
 </script>
+
 <style>
     ul{border:2px #cccccc solid;}
 </style>
@@ -54,7 +56,7 @@ function errFunc(e) {
 <div>
     <div>
         <form id="searchFrm">
-            한 페이지에 10개씩 출력됨 <br />        
+            한 페이지에 10개씩 출력됨 <br />
             <select id="startNum">
                 <option value="1">1페이지</option>
                 <option value="11">2페이지</option>
@@ -64,8 +66,8 @@ function errFunc(e) {
             </select>
             <input type="text" id="keyword" placeholder="검색어를 입력하세요." />
             <button type="button" id="searchBtn">검색 요청</button>
-        </form>    
-    </div>    
+        </form>
+    </div>
     <div class="row" id="searchResult">
         여기에 검색 결과가 출력됩니다.
     </div>
