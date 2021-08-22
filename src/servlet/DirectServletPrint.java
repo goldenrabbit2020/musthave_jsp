@@ -22,6 +22,6 @@ public class DirectServletPrint extends HttpServlet {
         writer.println("<p>jsp로 포워드하지 않습니다.</p>");
         writer.println("</body>");
         writer.println("</html>");
-        writer.close(); 
+        writer.close();
     }
 }
