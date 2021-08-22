@@ -23,35 +23,37 @@ public class SearchAPI extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String clientId = "B2IQxcs4AYqNTQz3S4dz"; //애플리케이션 클라이언트 아이디값"
-        String clientSecret = "KUNKcxtet6"; //애플리케이션 클라이언트 시크릿값"
+        // 1. 인증 정보 설정
+        String clientId = "본인의 클라이언트 아이디";
+        String clientSecret = "본인의 클라이언트 시크릿";
 
-
-        int startNum = 0;
-        String text = null;
+        // 2. 검색 조건 설정
+        int startNum = 0;    // 검색 시작 위치
+        String text = null;  // 검색어
         try {
-            startNum = Integer.parseInt(req.getParameter("startNum"));
-            String searchText = req.getParameter("keyword");
-            text = URLEncoder.encode(searchText, "UTF-8");
+             startNum = Integer.parseInt(req.getParameter("startNum"));
+             String searchText = req.getParameter("keyword");
+             text = URLEncoder.encode(searchText, "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException("검색어 인코딩 실패",e);
+            throw new RuntimeException("검색어 인코딩 실패", e);
         }
 
+        // 3. API URL 조합
         String apiURL = "https://openapi.naver.com/v1/search/blog?query=" + text
-                        + "&display=10&start=" + startNum;    // json 결과
-        //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query="+ text; // xml 결과
+                        + "&display=10&start=" + startNum;  // json 결과
+        //String apiURL = "https://openapi.naver.com/v1/search/blog.xml?query=" + text;  // xml 결과
 
-
+        // 4. API 호출
         Map<String, String> requestHeaders = new HashMap<>();
         requestHeaders.put("X-Naver-Client-Id", clientId);
         requestHeaders.put("X-Naver-Client-Secret", clientSecret);
-        String responseBody = get(apiURL,requestHeaders);
+        String responseBody = get(apiURL, requestHeaders);
 
+        // 5. 결과 출력
+        System.out.println(responseBody);  // 콘솔에 출력
 
-        System.out.println(responseBody);
-        
         resp.setContentType("text/html; charset=utf-8");
-        resp.getWriter().write(responseBody);
+        resp.getWriter().write(responseBody);  // 서블릿에서 즉시 출력
     }
 
     private static String get(String apiUrl, Map<String, String> requestHeaders){
