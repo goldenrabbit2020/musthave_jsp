@@ -3,13 +3,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-SimpleDateFormat sdFormat = new SimpleDateFormat("HH:mm:ss");  // 날짜 표시 형식 
+SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");  // 날짜 표시 형식
 
 long creationTime = session.getCreationTime();  // 최초 요청(세션 생성) 시각
-String creationTimeStr = sdFormat.format(new Date(creationTime));
+String creationTimeStr = dateFormat.format(new Date(creationTime));
 
 long lastTime = session.getLastAccessedTime();  // 마지막 요청 시각
-String lastTimeStr = sdFormat.format(new Date(lastTime)); 
+String lastTimeStr = dateFormat.format(new Date(lastTime));
 %>
 <html>
 <head><title>Session</title></head>
