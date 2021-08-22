@@ -1,11 +1,10 @@
 package model1.board;
 
-import javax.servlet.ServletContext;
-import common.JDBConnect;
-
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
+import javax.servlet.ServletContext;
+import common.JDBConnect;
 
 public class BoardDAO extends JDBConnect {
     public BoardDAO(ServletContext application) {
@@ -23,12 +22,12 @@ public class BoardDAO extends JDBConnect {
                    + " LIKE '%" + map.get("searchWord") + "%'";
         }
 
-        try { 
-            stmt = con.createStatement();  // 쿼리문 생성
-            rs = stmt.executeQuery(query); // 쿼리 실행
+        try {
+            stmt = con.createStatement();   // 쿼리문 생성
+            rs = stmt.executeQuery(query);  // 쿼리 실행
             rs.next();  // 커서를 첫 번째 행으로 이동
-            totalCount = rs.getInt(1); // 첫 번째 컬럼 값을 가져옴
-        } 
+            totalCount = rs.getInt(1);  // 첫 번째 칼럼 값을 가져옴
+        }
         catch (Exception e) {
             System.out.println("게시물 수를 구하는 중 예외 발생");
             e.printStackTrace();
@@ -76,7 +75,7 @@ public class BoardDAO extends JDBConnect {
     }
     
     // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
-    public List<BoardDTO> getListPage(Map<String, Object> map) {
+    public List<BoardDTO> selectListPage(Map<String, Object> map) {
         List<BoardDTO> bbs = new Vector<BoardDTO>();  // 결과(게시물 목록)를 담을 변수
         
         // 쿼리문 템플릿  
@@ -167,7 +166,7 @@ public class BoardDAO extends JDBConnect {
 
         try {
             psmt = con.prepareStatement(query);
-            psmt.setString(1, num);    // 인파라미트를 일련번호로 설정 
+            psmt.setString(1, num);    // 인파라미터를 일련번호로 설정 
             rs = psmt.executeQuery();  // 쿼리 실행 
 
             // 결과 처리
