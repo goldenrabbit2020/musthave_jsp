@@ -18,9 +18,9 @@ if (searchWord != null) {
     param.put("searchWord", searchWord);
 }
 
-int totalCount = dao.selectCount(param); // 게시물 수 확인
-List<BoardDTO> boardLists = dao.selectList(param); // 게시물 목록 받기
-dao.close(); // DB 연결 닫기
+int totalCount = dao.selectCount(param);  // 게시물 수 확인
+List<BoardDTO> boardLists = dao.selectList(param);  // 게시물 목록 받기
+dao.close();  // DB 연결 닫기
 %>
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,8 @@ dao.close(); // DB 연결 닫기
 <title>회원제 게시판</title>
 </head>
 <body>
-	<jsp:include page="../Common/Link.jsp" />
+    <jsp:include page="../Common/Link.jsp" />  <!-- 공통 링크 -->
+
     <h2>목록 보기(List)</h2>
     <!-- 검색폼 --> 
     <form method="get">  
@@ -48,7 +49,7 @@ dao.close(); // DB 연결 닫기
     </form>
     <!-- 게시물 목록 테이블(표) --> 
     <table border="1" width="90%">
-        <!-- 각 컬럼의 이름 --> 
+        <!-- 각 칼럼의 이름 --> 
         <tr>
             <th width="10%">번호</th>
             <th width="50%">제목</th>
@@ -70,10 +71,10 @@ if (boardLists.isEmpty()) {
 }
 else {
     // 게시물이 있을 때 
-    int virtualNum = 0; // 화면상에서의 게시물 번호
+    int virtualNum = 0;  // 화면상에서의 게시물 번호
     for (BoardDTO dto : boardLists)
     {
-        virtualNum = totalCount--; // 전체 게시물 수에서 시작해 1씩 감소
+        virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
 %>
         <tr align="center">
             <td><%= virtualNum %></td>  <!--게시물 번호-->
