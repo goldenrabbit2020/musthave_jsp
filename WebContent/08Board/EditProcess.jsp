@@ -22,7 +22,7 @@ dao.close();
 
 // 성공/실패 처리
 if (affected == 1) { 
-    // 성공 시 내용 보기 페이지로 이동
+    // 성공 시 상세 보기 페이지로 이동
     response.sendRedirect("View.jsp?num=" + dto.getNum()); 
 } 
 else {
