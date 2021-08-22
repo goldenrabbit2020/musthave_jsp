@@ -8,7 +8,7 @@
 <title>파일 첨부형 게시판</title>
 </head>
 <body>
-<h2>파일 첨부형 게시판 - 내용 보기(View)</h2>
+<h2>파일 첨부형 게시판 - 상세 보기(View)</h2>
 
 <table border="1" width="90%">
     <colgroup>
@@ -51,13 +51,13 @@
 
     <!-- 하단 메뉴(버튼) -->
     <tr>
-        <td colspan="4" align="center">  
-            <button type="button" onclick="location.href='../mvcboard/pass.do?mode=edit&idx=${ param.idx }';"> 
-                수정하기            
-            </button>                            
+        <td colspan="4" align="center">
+            <button type="button" onclick="location.href='../mvcboard/pass.do?mode=edit&idx=${ param.idx }';">
+                수정하기
+            </button>
             <button type="button" onclick="location.href='../mvcboard/pass.do?mode=delete&idx=${ param.idx }';">
-                삭제하기            
-            </button>        
+                삭제하기
+            </button>
             <button type="button" onclick="location.href='../mvcboard/list.do';">
                 목록 바로가기
             </button>
