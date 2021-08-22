@@ -13,8 +13,8 @@ import com.oreilly.servlet.MultipartRequest;
 
 public class FileUtil {
     // 파일 업로드(multipart/form-data 요청) 처리
-    public static MultipartRequest upload(HttpServletRequest req,
-            String saveDirectory, int maxPostSize) {  
+    public static MultipartRequest uploadFile(HttpServletRequest req,
+            String saveDirectory, int maxPostSize) {
         try {
             // 파일 업로드
             return new MultipartRequest(req, saveDirectory, maxPostSize, "UTF-8");
@@ -30,11 +30,11 @@ public class FileUtil {
     public static void download(HttpServletRequest req, HttpServletResponse resp,
             String directory, String sfileName, String ofileName) {
         String sDirectory = req.getServletContext().getRealPath(directory);
-        try {    
+        try {
             // 파일을 찾아 입력 스트림 생성
             File file = new File(sDirectory, sfileName);
             InputStream iStream = new FileInputStream(file);
-            
+
             // 한글 파일명 깨짐 방지
             String client = req.getHeader("User-Agent");
             if (client.indexOf("WOW64") == -1) {
@@ -43,28 +43,28 @@ public class FileUtil {
             else {
                 ofileName = new String(ofileName.getBytes("KSC5601"), "ISO-8859-1");
             }
-            
+
             // 파일 다운로드용 응답 헤더 설정
-            resp.reset();  
+            resp.reset();
             resp.setContentType("application/octet-stream");
             resp.setHeader("Content-Disposition",
                            "attachment; filename=\"" + ofileName + "\"");
             resp.setHeader("Content-Length", "" + file.length() );
-            
+
             //out.clear();  // 출력 스트림 초기화
-            
+
             // response 내장 객체로부터 새로운 출력 스트림 생성
-            OutputStream oStream = resp.getOutputStream();  
+            OutputStream oStream = resp.getOutputStream();
 
             // 출력 스트림에 파일 내용 출력
             byte b[] = new byte[(int)file.length()];
-            int readBuffer = 0;    
+            int readBuffer = 0;
             while ( (readBuffer = iStream.read(b)) > 0 ) {
                 oStream.write(b, 0, readBuffer);
             }
 
             // 입/출력 스트림 닫음
-            iStream.close();  
+            iStream.close();
             oStream.close();
         }
         catch (FileNotFoundException e) {
@@ -75,11 +75,11 @@ public class FileUtil {
             System.out.println("예외가 발생하였습니다.");
             e.printStackTrace();
         }
-    }    
+    }
 
     // 지정한 위치의 파일을 삭제합니다.
     public static void deleteFile(HttpServletRequest req,
-            String directory, String filename) {  
+            String directory, String filename) {
         String sDirectory = req.getServletContext().getRealPath(directory);
         File file = new File(sDirectory + File.separator + filename);
         if (file.exists()) {
