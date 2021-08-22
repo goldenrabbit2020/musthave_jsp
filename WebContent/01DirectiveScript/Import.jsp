@@ -11,7 +11,7 @@
 <body>
 <%
 Date today = new Date();  // 외부 클래스 생성
-SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 String todayStr = dateFormat.format(today);
 out.println("오늘 날짜 : " + todayStr);  // 오늘 날짜를 웹 브라우저에 출력
 %>
