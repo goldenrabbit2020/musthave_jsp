@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
-  <display-name>MustHaveJSP_origin</display-name>
+  <display-name>MustHaveJSP</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -9,10 +9,28 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+  <!-- 컨텍스트 초기화 매개변수(예제 2-10) -->
   <context-param>
     <param-name>INIT_PARAM</param-name>
     <param-value>web.xml에 저장한 초기화 매개변수</param-value>
   </context-param>
+
+  <!-- 에러 페이지 처리하기(예제 2-12) -->
+  <error-page>
+    <error-code>404</error-code>
+    <location>/02ImplicitObject/Exception.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>405</error-code>
+    <location>/02ImplicitObject/Exception.jsp</location>
+  </error-page>
+  <error-page>
+    <error-code>500</error-code>
+    <location>/02ImplicitObject/Exception.jsp</location>
+  </error-page>
+
+  <!-- 오라클 데이터베이스 접속 정보(예제 5-8) -->
   <context-param>
     <param-name>OracleDriver</param-name>
     <param-value>oracle.jdbc.OracleDriver</param-value>
@@ -29,10 +47,28 @@
     <param-name>OraclePwd</param-name>
     <param-value>1234</param-value>
   </context-param>
-  <context-param>
-    <param-name>maxPostSize</param-name>
-    <param-value>1024000</param-value>
-  </context-param>
+  
+  <!-- 세션 유지 시간 설정(예제 6-1) -->
+  <session-config>
+    <session-timeout>20</session-timeout>
+  </session-config>
+  
+  <!-- 한글 깨짐 방지를 위한 필터 설정(예제 7-9) -->
+  <filter>
+    <filter-name>SetCharEncoding</filter-name>
+    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
+      <init-param>
+        <param-name>encoding</param-name>
+        <param-value>utf-8</param-value>
+      </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>SetCharEncoding</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+
+  <!-- 게시판 페이징 처리를 위한 설정값(예제 9-3) -->
   <context-param>
     <param-name>POSTS_PER_PAGE</param-name>
     <param-value>10</param-value>
@@ -41,33 +77,18 @@
     <param-name>PAGES_PER_BLOCK</param-name>
     <param-value>5</param-value>
   </context-param>
-  <context-param>
-    <param-name>CHAT_ADDR</param-name>
-    <param-value>ws://localhost:8081/MustHaveJSP</param-value>
-  </context-param>
-  <session-config>
-    <session-timeout>20</session-timeout>
-  </session-config>
-  <filter>
-    <filter-name>SetCharEncoding</filter-name>
-    <filter-class>org.apache.catalina.filters.SetCharacterEncodingFilter</filter-class>
-    <init-param>
-      <param-name>encoding</param-name>
-      <param-value>utf-8</param-value>
-    </init-param>
-  </filter>
-  <filter-mapping>
-    <filter-name>SetCharEncoding</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-  <servlet>
+
+  <!-- 서블릿 매핑 1(예제 13-2) -->
+  <servlet>  <!-- 서블릿 등록 -->
     <servlet-name>HelloServlet</servlet-name>
     <servlet-class>servlet.HelloServlet</servlet-class>
   </servlet>
-  <servlet-mapping>
+  <servlet-mapping>  <!-- 서블릿과 요청명 매핑 -->
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/13Servlet/HelloServlet.do</url-pattern>
   </servlet-mapping>
+
+  <!-- 서블릿 매핑 2(예제 13-7) -->
   <servlet>
     <servlet-name>DirectServletPrint</servlet-name>
     <servlet-class>servlet.DirectServletPrint</servlet-class>
@@ -76,6 +97,8 @@
     <servlet-name>DirectServletPrint</servlet-name>
     <url-pattern>/13Servlet/DirectServletPrint.do</url-pattern>
   </servlet-mapping>
+
+  <!-- 서블릿 매핑 3(예제 13-14) -->
   <servlet>
     <servlet-name>MemberAuth</servlet-name>
     <servlet-class>servlet.MemberAuth</servlet-class>
@@ -88,6 +111,8 @@
     <servlet-name>MemberAuth</servlet-name>
     <url-pattern>/13Servlet/MemberAuth.mvc</url-pattern>
   </servlet-mapping>
+
+  <!-- 서블릿 매핑 4(예제 14-4) -->
   <servlet>
     <servlet-name>MVCBoardList</servlet-name>
     <servlet-class>model2.mvcboard.ListController</servlet-class>
@@ -96,6 +121,8 @@
     <servlet-name>MVCBoardList</servlet-name>
     <url-pattern>/mvcboard/list.do</url-pattern>
   </servlet-mapping>
+  
+  <!-- 서블릿 매핑 5(예제 14-7) -->
   <servlet>
     <servlet-name>MVCBoardWrite</servlet-name>
     <servlet-class>model2.mvcboard.WriteController</servlet-class>
@@ -104,4 +131,16 @@
     <servlet-name>MVCBoardWrite</servlet-name>
     <url-pattern>/mvcboard/write.do</url-pattern>
   </servlet-mapping>
+
+  <!-- 첨부 파일 최대 용량 설정(예제 14-8) -->
+  <context-param>
+    <param-name>maxPostSize</param-name>
+    <param-value>1024000</param-value>
+  </context-param>
+
+  <!-- 웹소켓 채팅을 위한 설정(예제 15-3) -->
+  <context-param>
+    <param-name>CHAT_ADDR</param-name>
+    <param-value>ws://localhost:8081/MustHaveJSP</param-value>
+  </context-param> 
 </web-app>
