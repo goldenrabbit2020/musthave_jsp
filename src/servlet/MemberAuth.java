@@ -13,7 +13,7 @@ import membership.MemberDTO;
 
 public class MemberAuth extends HttpServlet {
     MemberDAO dao;
-  
+
     @Override
     public void init() throws ServletException {
         // application 내장 객체 얻기
@@ -28,7 +28,7 @@ public class MemberAuth extends HttpServlet {
         // DAO 생성
         dao = new MemberDAO(driver, connectUrl, oId, oPass);
     }
-    
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
@@ -42,20 +42,20 @@ public class MemberAuth extends HttpServlet {
         // 회원 테이블에서 인증 요청한 ID/패스워드에 해당하는 회원 찾기
         MemberDTO memberDTO = dao.getMemberDTO(id, pass);
 
-        // 찾은 회원의 이름에 따른 처리 
+        // 찾은 회원의 이름에 따른 처리
         String memberName = memberDTO.getName();
         if (memberName != null) {  // 일치하는 회원 찾음
             req.setAttribute("authMessage", memberName + " 회원님 방가방가^^*");
         }
         else {  // 일치하는 회원 없음
-            if (admin_id.equals(id))  // 관리자      
+            if (admin_id.equals(id))  // 관리자
                 req.setAttribute("authMessage", admin_id + "는 최고 관리자입니다.");
             else  // 비회원
                 req.setAttribute("authMessage", "귀하는 회원이 아닙니다.");
         }
         req.getRequestDispatcher("/13Servlet/MemberAuth.jsp").forward(req, resp);
     }
-    
+
     @Override
     public void destroy() {
         dao.close();
