@@ -1,7 +1,7 @@
 package model1.board;
 
 public class BoardDTO {
-    // 멤버 변수 선언 ❷ 
+    // 멤버 변수 선언
     private String num;
     private String title;
     private String content;
