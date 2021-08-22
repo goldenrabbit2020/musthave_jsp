@@ -31,7 +31,7 @@ public class ChatServer {
                     client.getBasicRemote().sendText(message);
                 }
             }
-        }        
+        }
     }
 
     @OnClose  // 클라이언트와의 연결이 끊기면 실행
