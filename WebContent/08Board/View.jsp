@@ -31,7 +31,8 @@ function deletePost() {
 <jsp:include page="../Common/Link.jsp" />
 <h2>회원제 게시판 - 상세 보기(View)</h2>
 <form name="writeFrm">
-    <input type="hidden" name="num" value="<%= num %>" />
+    <input type="hidden" name="num" value="<%= num %>" />  <!-- 공통 링크 -->
+
     <table border="1" width="90%">
         <tr>
             <td>번호</td>
@@ -62,7 +63,7 @@ function deletePost() {
             %>
                 <button type="button"
                         onclick="location.href='Edit.jsp?num=<%= dto.getNum() %>';">
-                        수정하기</button>
+                    수정하기</button>
                 <button type="button" onclick="deletePost();">삭제하기</button> 
             <%
             }
