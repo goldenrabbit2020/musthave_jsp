@@ -4,7 +4,7 @@
 public int add(int num1 , int num2) {
     return num1 + num2;
 }
-%>   
+%>
 <html>
 <head><title>스크립트 요소</title></head>
 <body>
