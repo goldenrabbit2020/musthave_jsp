@@ -13,7 +13,7 @@ if (status == 404) {
 }
 else if (status == 405) {
     out.print("405 에러가 발생하였습니다.");
-    out.print("<br/>요청 방식(method)을 확인해주세요.");   
+    out.print("<br/>요청 방식(method)을 확인해주세요.");
 }
 else if (status == 500) {
     out.print("500 에러가 발생하였습니다.");
