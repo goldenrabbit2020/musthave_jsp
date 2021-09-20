@@ -21,7 +21,7 @@
     <c:if test="${ not result2 }">
         'Java'가 아닙니다. <br />
     </c:if>
-
+ 
     <h4>조건식 주의사항</h4>
     <c:if test="100" var="result3">
         EL이 아닌 정수를 지정하면 false
