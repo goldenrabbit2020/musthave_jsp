@@ -23,16 +23,16 @@
     </c:if>
 
     <h4>조건식 주의사항</h4>
-    <c:if test="100" var="result4">
+    <c:if test="100" var="result3">
         EL이 아닌 정수를 지정하면 false
     </c:if>
     result3 : ${result3 } <br />
-    <c:if test="tRuE" var="result3">
-        대소문자 구분 없이 "TRUE"인 경우 true <br />
+    <c:if test="tRuE" var="result4">
+        대소문자 구분 없이 "tRuE"인 경우 true <br />
     </c:if>
     result4 : ${ result4 } <br />
-    <c:if test="${ true }"  var="result5">
-        EL 양쪽에 빈 공백이 있는 경우 false
+    <c:if test=" ${ true } "  var="result5">
+        EL 양쪽에 빈 공백이 있는 경우 false <br />
     </c:if>
     result5 : ${ result5 } <br />
 </body>

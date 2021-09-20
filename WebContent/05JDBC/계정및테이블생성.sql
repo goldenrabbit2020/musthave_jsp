@@ -31,7 +31,7 @@ create table board (
     num number primary key,
     title varchar2(200) not null,
     content varchar2(2000) not null,
-    id varchar2(30) not null,
+    id varchar2(10) not null,
     postdate date default sysdate not null,
     visitcount number(6)
 );
