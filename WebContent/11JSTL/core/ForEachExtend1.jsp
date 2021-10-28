@@ -6,15 +6,15 @@
 <body>
     <h4>향상된 for문 형태의 forEach 태그</h4>
     <%
-    String[] cmyk = {"Cyan","Magenta","Yellow","Black"};
+    String[] rgb = {"Red", "Green", "Blue"};
     %>
-    <c:forEach items="<%= cmyk %>" var="c">
+    <c:forEach items="<%= rgb %>" var="c">
         <span style="color:${ c };">${ c }</span>
     </c:forEach>
 
     <h4>varStatus 속성 살펴보기</h4>
     <table border="1">
-    <c:forEach items="<%= cmyk %>" var="c" varStatus="loop">
+    <c:forEach items="<%= rgb %>" var="c" varStatus="loop">
         <tr>
             <td>count : ${ loop.count }</td>
             <td>index : ${ loop.index }</td>
