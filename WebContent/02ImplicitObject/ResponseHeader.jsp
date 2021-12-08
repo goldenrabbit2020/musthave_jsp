@@ -4,8 +4,12 @@
     pageEncoding="UTF-8"%>
 <%
 // 응답 헤더에 추가할 값 준비
-SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 long add_date = s.parse(request.getParameter("add_date")).getTime(); 
+
+java.sql.Date date2 = new java.sql.Date(add_date); 
+System.out.println(date2);
+
 int add_int = Integer.parseInt(request.getParameter("add_int"));
 String add_str = request.getParameter("add_str");
 
