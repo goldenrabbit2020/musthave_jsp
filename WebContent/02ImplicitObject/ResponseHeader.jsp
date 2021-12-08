@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-// 응답 헤더에 추가할 값 준비
+// 응답 헤더에 추가할 값 준비 
 SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 long add_date = s.parse(request.getParameter("add_date")).getTime(); 
 
