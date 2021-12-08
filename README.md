@@ -7,8 +7,8 @@
 
 * 성낙현 지음 | <a href="https://goldenrabbit.co.kr">골든래빗(주)</a>
 * 28,000원 | 632쪽
-* 미리보기 | 정오표 
-* 구매처 : 교보문고, 예스24, 알라딘, 인터파크
+* <a href="https://drive.google.com/file/d/1tttlC0-mp7xL_xGo8Q2K6kZkOynwVKPK/view">미리보기</a> | <a href="https://docs.google.com/spreadsheets/d/1hOhp_Lqz9CTh6hsGVBlEteLez05OQUajNlGBXEYmMyc/edit#gid=0">정오표</a>
+* 구매처 : <a href="http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9791191905052">교보문고</a>, <a href="http://www.yes24.com/Product/Goods/105016218">예스24</a>, <a href="https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=282998267">알라딘</a>, <a href="http://book.interpark.com/product/BookDisplay.do?_method=detail&sc.shopNo=0000400000&sc.prdNo=354281346">인터파크</a>
 
 * * *
 
