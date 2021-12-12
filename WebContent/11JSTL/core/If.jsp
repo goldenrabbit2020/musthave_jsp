@@ -10,7 +10,7 @@
 
     <h4>JSTL의 if 태그로 짝수/홀수 판단하기</h4>
     <c:if test="${ number mod 2 eq 0 }" var="result">
-        ${ numVar }는 짝수입니다. <br />
+        ${ number }는 짝수입니다. <br />
     </c:if>
     result : ${ result } <br />
 
